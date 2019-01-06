@@ -4,6 +4,13 @@
   "main": "index.js",
   "author": "Adrian Pearman <adrianpearman12@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "install-api": "npm install",
+    "install-client": "cd client; npm install",
+    "client": "cd client; npm start",
+    "json-server": "json-server --port 4000 --watch api.json",
+    "start": "concurrently \"npm run client\" \"npm run json-server\""
+  },
   "dependencies": {
     "concurrently": "^4.1.0",
     "json-server": "^0.14.2"
