@@ -1,9 +1,14 @@
 // NPM MODULES
 import React, { Component } from 'react'
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { connect, Provider } from 'react-redux'
 import axios from 'axios'
 
 // COMPONENTS
 import Candidate from './Candidate'
+import Header from './Header'
+import ErrorComponent from './ErrorComponent'
+import CandidateDetails from './CandidateDetails'
 
 class CandidateList extends Component {
     state = {
@@ -35,9 +40,14 @@ class CandidateList extends Component {
             )
         })
         return (
-            <div className='mt-4'>
-                {Candidates}
-            </div>
+            <Router>
+                <Switch>
+                    <Header />
+                    <Route path='/' exact render={() => Candidates} />
+                    <Route path='/candidate/:id' component={CandidateDetails} />                    
+                    <Route path='*' component={ErrorComponent} />
+                </Switch>
+            </Router>
         )
     }
 }
