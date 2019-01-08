@@ -15,7 +15,7 @@ class CandidateList extends Component {
         axios.get('http://localhost:4000/candidates')
             .then((candidates) => {
                 let candidateList = candidates.data
-                console.log(candidateList)
+                // console.log(candidateList)
                 this.setState({ candidates: candidateList })
             })
             .catch(err => {
